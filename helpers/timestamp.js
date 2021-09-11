@@ -25,7 +25,6 @@ const addToInitialTime = (initialTimestamp, { hours, minutes, seconds }) =>
 
 const processLine = (initialTimestamp, line) => {
   if (line.match(timestampRegex)) {
-    //get timestamp from original line
     const [hours, minutes, seconds] = line.match(timestampRegex)[0].split(':');
     const lineTimeStamp = {
       hours,
@@ -33,7 +32,6 @@ const processLine = (initialTimestamp, line) => {
       seconds
     }
     const newTimeStampValue = addToInitialTime(initialTimestamp, lineTimeStamp);
-    //console.log('sum: ', newTimeStampValue)
     return line.replace(timestampRegex, newTimeStampValue);
   } else return line;
 };
